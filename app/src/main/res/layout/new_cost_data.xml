@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/category"
+        android:hint="Choose Category"
+        android:spinnerMode="dialog" />
+
+    <EditText
+        android:id="@+id/et_cost_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:hint="Cost Title"
+        android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/et_cost_money"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:hint="Cost Money"
+        android:inputType="number"
+        android:visibility="visible" />
+
+    <DatePicker
+        android:id="@+id/dp_cost_date"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:visibility="visible" />
+
+
+</LinearLayout>
