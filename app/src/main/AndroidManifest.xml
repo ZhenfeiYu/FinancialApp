@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".demo_Tian"></activity>
         <activity
             android:name=".Tab"
-            android:label="@string/title_activity_tab"></activity>
+            android:label="@string/title_activity_tab" />
         <activity android:name=".activity_addexpense" />
         <activity
             android:name=".MainActivity"
