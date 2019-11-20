@@ -20,9 +20,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.annotations.Nullable;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity  {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
             Toast.makeText(this,"Name:" + personName + " LoginID" + personEmail,Toast.LENGTH_SHORT).show();
-            Intent LoginToHome = new Intent(MainActivity.this,activity_addexpense.class);
+            Intent LoginToHome = new Intent(MainActivity.this,Tab.class);
             startActivity(LoginToHome);
         }
 
