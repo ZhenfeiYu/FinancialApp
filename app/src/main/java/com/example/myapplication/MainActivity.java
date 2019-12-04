@@ -47,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
+    TextView app_info;
     private SignInButton signInButton;
     private int RC_SIGN_IN = 1;
     private String TAG = "activity_login";
@@ -74,6 +75,18 @@ public class MainActivity extends AppCompatActivity  {
                 signIn();
             }
         });
+
+
+        app_info = (TextView)findViewById(R.id.app_info);
+        app_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,about_app.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     /*
