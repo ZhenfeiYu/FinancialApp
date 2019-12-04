@@ -56,8 +56,9 @@
     <ImageView
         android:id="@+id/user_photo"
         android:layout_width="83dp"
-        android:layout_height="70dp"
+        android:layout_height="83dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="10dp"
+        android:contentDescription="UserImage"
         android:src="@drawable/ic_account_circle_black_24dp" />
 </FrameLayout>
