@@ -76,6 +76,15 @@ public class MainActivity extends AppCompatActivity  {
         });
     }
 
+    /*
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser account = FirebaseAuth.getInstance().getCurrentUser();
+        updateUI(account);
+
+     */
+
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
@@ -121,7 +130,7 @@ public class MainActivity extends AppCompatActivity  {
         if (acct != null) {
             String personName = acct.getDisplayName();
             String personEmail = acct.getEmail();
-            Toast.makeText(this,"Name:" + personName + " LoginID" + personEmail,Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Name:" + personName + " LoginID:" + personEmail,Toast.LENGTH_SHORT).show();
             Intent LoginToHome = new Intent(MainActivity.this,Tab.class);
             startActivity(LoginToHome);
         }

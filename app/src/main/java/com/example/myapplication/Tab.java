@@ -20,9 +20,7 @@ import java.util.List;
 
 public class Tab extends AppCompatActivity {
 
-    private List<CostBean> mCostBeanList;
-    private DatabaseHelper mDatabaseHelper;
-    private CostListAdapter mAdapter;
+
 
 
     @Override
