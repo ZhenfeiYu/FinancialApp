@@ -89,14 +89,14 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-    /*
+
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser account = FirebaseAuth.getInstance().getCurrentUser();
         updateUI(account);
+    }
 
-     */
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -139,10 +139,10 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void updateUI(FirebaseUser user) {
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
+
+        if (user != null) {
+            String personName = user.getDisplayName();
+            String personEmail = user.getEmail();
             Toast.makeText(this,"Name:" + personName + " LoginID:" + personEmail,Toast.LENGTH_SHORT).show();
             Intent LoginToHome = new Intent(MainActivity.this,Tab.class);
             startActivity(LoginToHome);

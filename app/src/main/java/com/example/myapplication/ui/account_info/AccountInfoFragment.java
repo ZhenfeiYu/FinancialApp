@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.about_app;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -46,11 +47,11 @@ public class AccountInfoFragment extends Fragment {
             String personName = user.getDisplayName();
             String personEmail = user.getEmail();
             Uri personPhoto = user.getPhotoUrl();
-            name = (TextView) root.findViewById(R.id.account_info_name_value);
+            name = root.findViewById(R.id.account_info_name_value);
             name.setText(personName);
-            email = (TextView) root.findViewById(R.id.account_info_email_value);
+            email = root.findViewById(R.id.account_info_email_value);
             email.setText(personEmail);
-            img  = (ImageView) root.findViewById(R.id.user_photo);
+            img  = root.findViewById(R.id.user_photo);
             Glide.with(this).load(String.valueOf(personPhoto)).into(img);
 
         }
@@ -61,7 +62,7 @@ public class AccountInfoFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(getActivity(),MainActivity.class);
+                Intent intent = new Intent(getActivity(), MainActivity.class);
                 startActivity(intent);
             }
         });
