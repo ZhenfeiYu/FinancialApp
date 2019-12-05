@@ -28,12 +28,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
 
 public class AccountInfoFragment extends Fragment {
 
-    TextView name,email;
-    ImageView img;
-    Button sign_out;
+    private TextView name,email,share_link;
+    private ImageView img;
+    private Button sign_out;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
 
 
@@ -56,6 +58,14 @@ public class AccountInfoFragment extends Fragment {
 
         }
 
+        share_link = root.findViewById(R.id.share_link);
+        share_link.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sharelink();
+            }
+        });
+
         sign_out = root.findViewById(R.id.sign_out);
 
         sign_out.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +80,13 @@ public class AccountInfoFragment extends Fragment {
         return root;
     }
 
-
-
+    public void sharelink(){
+        String link = "https://drive.google.com/open?id=1M0irCGgUrzF6CR2zYgmWwaU8SClxGAAh";
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_TEXT, link);
+        intent.setType("text/plain");
+        startActivity(intent);
+    }
 
 }

@@ -9,4 +9,9 @@
     <string name="title_view_expenses">View Expenses</string>
     <string name="title_account_info">Account Details</string>
     <string name="sign_out">Sign Out</string>
+    <string name="invite_a_friend">Invite a friend</string>
+    <string name="userimage">UserImage</string>
+    <string name="email">Email:</string>
+    <string name="empty_space" />
+    <string name="name">Name:</string>
 </resources>

@@ -13,7 +13,7 @@
         android:layout_marginStart="95dp"
         android:layout_marginTop="100dp"
         android:fontFamily="sans-serif-black"
-        android:text="Name:"
+        android:text="@string/name"
         android:textSize="18sp" />
 
     <TextView
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
         android:layout_marginTop="100dp"
-        android:text=" "
+        android:text="@string/empty_space"
         android:textSize="18sp" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_marginStart="95dp"
         android:layout_marginTop="120dp"
         android:fontFamily="sans-serif-black"
-        android:text="Email:"
+        android:text="@string/email"
         android:textSize="18sp" />
 
     <TextView
@@ -41,14 +41,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="155dp"
         android:layout_marginTop="120dp"
-        android:text=" "
+        android:text="@string/empty_space"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/sign_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
+        android:layout_marginStart="135dp"
         android:layout_marginTop="225dp"
         android:text="@string/sign_out"
         android:textSize="18sp" />
@@ -59,6 +59,22 @@
         android:layout_height="84dp"
         android:layout_marginStart="150dp"
         android:layout_marginTop="10dp"
-        android:contentDescription="UserImage"
+        android:contentDescription="@string/userimage"
         android:src="@drawable/ic_account_circle_black_24dp" />
+
+    <TextView
+        android:id="@+id/share_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="300dp"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_share_black_24dp"
+        android:drawablePadding="4dp"
+        android:gravity="center"
+        android:text="@string/invite_a_friend"
+        android:textSize="14sp"
+        android:focusable="true" />
+
+
 </FrameLayout>
