@@ -80,7 +80,7 @@ public class AccountInfoFragment extends Fragment {
         return root;
     }
 
-    public void sharelink(){
+    private void sharelink(){
         String link = "Hey! Check out our personalized finance application for free at:  " +
                 "https://drive.google.com/open?id=1M0irCGgUrzF6CR2zYgmWwaU8SClxGAAh";
         Intent intent = new Intent();
@@ -89,5 +89,6 @@ public class AccountInfoFragment extends Fragment {
         intent.setType("text/plain");
         startActivity(intent);
     }
+
 
 }

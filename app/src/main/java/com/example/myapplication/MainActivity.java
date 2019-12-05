@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity  {
         });
 
 
-        app_info = (TextView)findViewById(R.id.app_info);
+        app_info = findViewById(R.id.app_info);
         app_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity  {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Login Failed. Try Again", Toast.LENGTH_LONG).show();;
+                            Toast.makeText(MainActivity.this, "Login Failed. Try Again", Toast.LENGTH_LONG).show();
                             updateUI(null);
                         }
                     }
@@ -150,4 +150,8 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        //do nothing
+    }
 }
