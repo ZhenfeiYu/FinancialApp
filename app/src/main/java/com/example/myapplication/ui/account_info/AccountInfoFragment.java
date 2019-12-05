@@ -81,7 +81,8 @@ public class AccountInfoFragment extends Fragment {
     }
 
     public void sharelink(){
-        String link = "https://drive.google.com/open?id=1M0irCGgUrzF6CR2zYgmWwaU8SClxGAAh";
+        String link = "Hey! Check out our personalized finance application for free at:  " +
+                "https://drive.google.com/open?id=1M0irCGgUrzF6CR2zYgmWwaU8SClxGAAh";
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.putExtra(Intent.EXTRA_TEXT, link);
