@@ -32,6 +32,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,15 +42,35 @@ public class AddExpenseFragment extends Fragment {
     private List<CostBean> mCostBeanList;
     private DatabaseHelper mDatabaseHelper;
     private CostListAdapter mAdapter;
+    private View rootView;
+    //private val savedState = supportFragmentManager.saveFragmentInstanceState(fragment);
+
 
 //    private static final String TAG = "AddExpenseFragment";
 
     public View onCreateView(@NonNull final LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_expenses, null);
-        View viewlist = inflater.inflate(R.layout.list_item, container, false);
+        if(rootView==null){
+            rootView=inflater.inflate(R.layout.fragment_add_expenses, null);
+        }else{
+            ViewGroup parent = (ViewGroup) rootView.getParent();
+            if (parent != null){
+                parent.removeView(rootView);
+            }
+
+        }
+        //View view = inflater.inflate(R.layout.fragment_add_expenses, null);
+        //View viewlist = inflater.inflate(R.layout.list_item, container, false);
+        mDatabaseHelper = new DatabaseHelper(getActivity());
+        mCostBeanList = new ArrayList<>();
+        mDatabaseHelper = new DatabaseHelper(getActivity());
+        mCostBeanList = new ArrayList<>();
+        //View costlist = inflater.inflate(R.layout.fragment_add_expenses, container, false);
+        initCostData();
+
+
         //View root = inflater.inflate(R.layout.fragment_add_expenses, container, false);
-        FloatingActionButton fab = view.findViewById(R.id.fab);
+        FloatingActionButton fab = rootView.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,14 +82,10 @@ public class AddExpenseFragment extends Fragment {
                 final EditText money = (EditText) viewDialog.findViewById(com.example.myapplication.R.id.et_cost_money);
                 final DatePicker date = (DatePicker) viewDialog.findViewById(com.example.myapplication.R.id.dp_cost_date);
 
-
-                mDatabaseHelper = new DatabaseHelper(getActivity());
-                mCostBeanList = new ArrayList<>();
-                //View costlist = inflater.inflate(R.layout.fragment_add_expenses, container, false);
                 ListView costList = getView().findViewById(R.id.lv_main);
-                initCostData();
                 mAdapter = new CostListAdapter(getActivity(), mCostBeanList);
                 costList.setAdapter(mAdapter);
+
                 builder.setView(viewDialog);
                 builder.setTitle("New Cost");
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -91,7 +109,7 @@ public class AddExpenseFragment extends Fragment {
                 builder.create().show();
             }
         });
-        return view;
+        return rootView;
     }
 
     private void initCostData() {
