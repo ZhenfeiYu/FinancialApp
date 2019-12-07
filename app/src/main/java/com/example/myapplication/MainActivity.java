@@ -47,6 +47,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
+    TextView app_info;
     private SignInButton signInButton;
     private int RC_SIGN_IN = 1;
     private String TAG = "activity_login";
@@ -74,7 +75,28 @@ public class MainActivity extends AppCompatActivity  {
                 signIn();
             }
         });
+
+
+        app_info = (TextView)findViewById(R.id.app_info);
+        app_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,about_app.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser account = FirebaseAuth.getInstance().getCurrentUser();
+        updateUI(account);
+    }
+
 
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
@@ -117,11 +139,11 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void updateUI(FirebaseUser user) {
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (acct != null) {
-            String personName = acct.getDisplayName();
-            String personEmail = acct.getEmail();
-            Toast.makeText(this,"Name:" + personName + " LoginID" + personEmail,Toast.LENGTH_SHORT).show();
+
+        if (user != null) {
+            String personName = user.getDisplayName();
+            String personEmail = user.getEmail();
+            Toast.makeText(this,"Name:" + personName + " LoginID:" + personEmail,Toast.LENGTH_SHORT).show();
             Intent LoginToHome = new Intent(MainActivity.this,Tab.class);
             startActivity(LoginToHome);
         }
