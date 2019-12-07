@@ -12,7 +12,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static final String COST_MONEY = "cost_money";
     public static final String COST_DATE = "cost_date";
-    //public static final String COST_TITLE = "cost_title";
+    public static final String COST_TITLE = "cost_title";
     public static final String FINANCE_COST = "finance_cost";
 
     public static final String COST_CATEGORY="cost_category";
@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         SQLiteDatabase database = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(COST_CATEGORY, costBean.costCategory);
-        //cv.put(COST_TITLE, costBean.costTitle);
+        cv.put(COST_TITLE, costBean.costTitle);
         cv.put(COST_DATE, costBean.costDate);
         cv.put(COST_MONEY, costBean.costMoney);
 
