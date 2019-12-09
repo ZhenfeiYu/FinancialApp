@@ -12,10 +12,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
     public static final String COST_MONEY = "cost_money";
     public static final String COST_DATE = "cost_date";
+    public static final String COST_CATEGORY="cost_category";
     public static final String COST_TITLE = "cost_title";
     public static final String FINANCE_COST = "finance_cost";
 
-    public static final String COST_CATEGORY="cost_category";
 
     public DatabaseHelper(Context context) {
         super(context, "finance_daily", null, 1);
@@ -26,6 +26,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         db.execSQL("create table if not exists finance_cost("+
                 "id interger primary key, "+
                 "cost_category varchar,"+
+                "cost_title varchar,"+
                 "cost_date varchar, "+
                 "cost_money varchar)");
     }

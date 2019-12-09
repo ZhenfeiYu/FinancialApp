@@ -38,7 +38,9 @@ public class AccountInfoFragment extends Fragment {
     private Button sign_out;
     private FirebaseAuth.AuthStateListener mAuthStateListner;
 
+    public AccountInfoFragment(){
 
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 

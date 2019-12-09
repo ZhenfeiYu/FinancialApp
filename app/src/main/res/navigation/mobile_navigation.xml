@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
-
+    
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.myapplication.ui.home.HomeFragment"
         android:label="@string/title_home"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/mobile_navigation"
         tools:layout="@layout/fragment_home" />
 
     <fragment
@@ -21,7 +23,7 @@
         android:id="@+id/navigation_view_expenses"
         android:name="com.example.myapplication.ui.view_expenses.ViewExpensesFragment"
         android:label="@string/title_view_expenses"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_viewexpenses" />
 
     <fragment
         android:id = "@id/navigation_account_info"

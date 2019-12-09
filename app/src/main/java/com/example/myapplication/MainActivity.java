@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity  {
             String personName = user.getDisplayName();
             String personEmail = user.getEmail();
             Toast.makeText(this,"Name:" + personName + " LoginID:" + personEmail,Toast.LENGTH_SHORT).show();
-            Intent LoginToHome = new Intent(MainActivity.this,Tab.class);
+            Intent LoginToHome = new Intent(MainActivity.this,activity_tab.class);
             startActivity(LoginToHome);
         }
 

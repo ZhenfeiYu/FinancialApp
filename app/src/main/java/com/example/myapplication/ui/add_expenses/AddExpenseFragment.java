@@ -21,6 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.myapplication.DatabaseHelper;
@@ -41,36 +42,44 @@ public class AddExpenseFragment extends Fragment {
 
     private List<CostBean> mCostBeanList;
     private DatabaseHelper mDatabaseHelper;
+    private RecyclerView recyclerView;
     private CostListAdapter mAdapter;
-    private View rootView;
+    //private View rootView;
+
     //private val savedState = supportFragmentManager.saveFragmentInstanceState(fragment);
+    public AddExpenseFragment() {
 
+    }
 
-//    private static final String TAG = "AddExpenseFragment";
-
-    public View onCreateView(@NonNull final LayoutInflater inflater,
-                             final ViewGroup container, Bundle savedInstanceState) {
-        if(rootView==null){
-            rootView=inflater.inflate(R.layout.fragment_add_expenses, null);
-        }else{
-            ViewGroup parent = (ViewGroup) rootView.getParent();
-            if (parent != null){
-                parent.removeView(rootView);
-            }
-
-        }
+    //    private static final String TAG = "AddExpenseFragment";
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_add_expenses, container, false);
+//    public View onCreateView(@NonNull final LayoutInflater inflater,
+//                             final ViewGroup container, Bundle savedInstanceState) {
+//        if (rootView == null) {
+//            rootView = inflater.inflate(R.layout.fragment_add_expenses, null);
+//        } else {
+//            ViewGroup parent = (ViewGroup) rootView.getParent();
+//            if (parent != null) {
+//                parent.removeView(rootView);
+//            }
+//
+//        }
+        setRetainInstance(true);
         //View view = inflater.inflate(R.layout.fragment_add_expenses, null);
         //View viewlist = inflater.inflate(R.layout.list_item, container, false);
         mDatabaseHelper = new DatabaseHelper(getActivity());
         mCostBeanList = new ArrayList<>();
         mDatabaseHelper = new DatabaseHelper(getActivity());
         mCostBeanList = new ArrayList<>();
+
         //View costlist = inflater.inflate(R.layout.fragment_add_expenses, container, false);
         initCostData();
 
-
         //View root = inflater.inflate(R.layout.fragment_add_expenses, container, false);
-        FloatingActionButton fab = rootView.findViewById(R.id.fab);
+        FloatingActionButton fab = view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +100,6 @@ public class AddExpenseFragment extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //inflate.inflate(R.layout.new_cost_data, null);
                         CostBean costBean = new CostBean();
                         costBean.costTitle = title.getText().toString();
                         costBean.costCategory = category.getSelectedItem().toString();
@@ -103,14 +111,17 @@ public class AddExpenseFragment extends Fragment {
                         mDatabaseHelper.insertCost(costBean);
                         mCostBeanList.add(costBean);
                         mAdapter.notifyDataSetChanged();
+
                     }
                 });
                 builder.setNegativeButton("Cancel", null);
                 builder.create().show();
             }
         });
-        return rootView;
+        return view;
+
     }
+
 
     private void initCostData() {
 

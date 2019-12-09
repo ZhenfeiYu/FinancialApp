@@ -12,10 +12,12 @@ import com.example.myapplication.R;
 
 public class ViewExpensesFragment extends Fragment {
 
+    public ViewExpensesFragment(){
 
+    }
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_viewexpenses, container, false);
         return root;
     }
 }
