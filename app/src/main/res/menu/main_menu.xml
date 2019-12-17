@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/linechart"
         android:orderInCategory="100"
-        android:title="@string/settings"
+        android:title="@string/linechart"
         app:showAsAction="never"/>
 
 

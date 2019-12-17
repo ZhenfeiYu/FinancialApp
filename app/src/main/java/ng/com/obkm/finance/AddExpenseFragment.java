@@ -23,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +45,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 //import androidx.fragment.app.FragmentTransaction;
 //import androidx.fragment.app.FragmentManager;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +55,7 @@ public class AddExpenseFragment extends Fragment {
     private DatabaseHelper mDatabaseHelper;
     private RecyclerView recyclerView;
     private CostListAdapter mAdapter;
+
     //private View rootView;
 
     //private val savedState = supportFragmentManager.saveFragmentInstanceState(fragment);
@@ -63,6 +68,9 @@ public class AddExpenseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_expense, container, false);
+        setHasOptionsMenu(true);
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        ((MainActivity) getActivity()).setSupportActionBar(toolbar);
 //    public View onCreateView(@NonNull final LayoutInflater inflater,
 //                             final ViewGroup container, Bundle savedInstanceState) {
 //        if (rootView == null) {
@@ -145,4 +153,32 @@ public class AddExpenseFragment extends Fragment {
             cursor.close();
         }
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getActivity().getMenuInflater().inflate(R.menu.main_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+
+
+        if (id == R.id.linechart) {
+            Intent intent = new Intent(getActivity(),LineChartActivity.class);
+            intent.putExtra("cost_list",(Serializable) mCostBeanList);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
